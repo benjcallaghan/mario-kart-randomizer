@@ -12,5 +12,8 @@ import { ContainerComponent } from './container/container.component';
   ],
   declarations: [ContainerComponent],
   entryComponents: [],
+  exports: [
+    ContainerComponent
+  ]
 })
 export class ComponentsModule {}
