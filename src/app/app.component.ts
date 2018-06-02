@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
 
 @Component({
-  selector: 'app-root',
+  selector: 'mk-root',
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
