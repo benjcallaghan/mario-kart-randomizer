@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { ContainerComponent } from './container/container.component';
 
 @NgModule({
   imports: [
@@ -9,7 +10,7 @@ import { IonicModule } from '@ionic/angular';
     FormsModule,
     IonicModule.forRoot(),
   ],
-  declarations: [],
+  declarations: [ContainerComponent],
   entryComponents: [],
 })
 export class ComponentsModule {}
