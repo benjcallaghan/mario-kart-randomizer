@@ -1,0 +1,6 @@
+{
+  "appId": "com.walkingriver.mariokartrandomizer",
+  "appName": "Mario Kart Randomizer",
+  "bundledWebRuntime": false,
+  "webDir": "www"
+}
