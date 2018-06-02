@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, RouteReuseStrategy, Routes } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,7 +18,6 @@ import { ComponentsModule } from './components/components.module';
     ComponentsModule
   ],
   providers: [
-    StatusBar,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
