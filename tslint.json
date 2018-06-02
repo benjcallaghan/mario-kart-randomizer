@@ -115,13 +115,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "mk",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      "mk",
       "kebab-case"
     ],
     "no-output-on-prefix": true,

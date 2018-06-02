@@ -6,7 +6,7 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "app",
+      "prefix": "mk",
       "schematics": {},
       "architect": {
         "build": {
