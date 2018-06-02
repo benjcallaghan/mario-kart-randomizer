@@ -10,5 +10,27 @@
 </ion-header>
 
 <ion-content padding>
-  <mk-container [items]="characters"></mk-container>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let player of players">
+        <ion-row>
+          <mk-container [items]="characters"></mk-container>
+        </ion-row>
+        <ion-row>
+          <mk-container [items]="vehicles"></mk-container>
+        </ion-row>
+        <ion-row>
+          <mk-container [items]="wheels"></mk-container>
+        </ion-row>
+        <ion-row>
+          <mk-container [items]="gliders"></mk-container>
+        </ion-row>
+        <ion-row>
+          <ion-button size="small" expand="block">
+            {{ player }}
+          </ion-button>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

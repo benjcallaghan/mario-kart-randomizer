@@ -13,6 +13,10 @@ export class SlotsPage implements OnInit {
   public wheels: MkItem[];
   public gliders: MkItem[];
 
+  public players = [
+    'Player 1', 'Player 2', 'Player 3', 'Player 4'
+  ];
+
   constructor(mario: MarioService) {
     this.characters = mario.getAllCharacters();
     this.vehicles = mario.getAllVehicles();
