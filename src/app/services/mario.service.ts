@@ -84,7 +84,7 @@ export class MarioService {
     { itemType: 'a', name: 'Bone Rattler', image: '100px-MK8BoneRattler.png' }
   ];
 
-  private static tires: MkItem[] = [
+  private static wheels: MkItem[] = [
     { itemType: '', name: 'Standard', image: '100px-StandardTiresMK8.png' },
     { itemType: '', name: 'Monster', image: '100px-MonsterTiresMK8.png' },
     { itemType: '', name: 'Roller', image: '100px-RollerTiresMK8.png' },
@@ -127,19 +127,19 @@ export class MarioService {
 
   constructor() { }
 
-  get allCharacters(): MkItem[] {
+  getAllCharacters(): MkItem[] {
     return MarioService.characters;
   }
 
-  get allVehicles(): MkItem[] {
+  getAllVehicles(): MkItem[] {
     return MarioService.vehicles;
   }
 
-  get allTires(): MkItem[] {
-    return MarioService.tires;
+  getAllWheels(): MkItem[] {
+    return MarioService.wheels;
   }
 
-  get allGliders(): MkItem[] {
+  getAllGliders(): MkItem[] {
     return MarioService.gliders;
   }
 }

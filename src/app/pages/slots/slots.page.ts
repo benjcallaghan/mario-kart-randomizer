@@ -10,11 +10,14 @@ import { MkItem } from '../../mk-item';
 export class SlotsPage implements OnInit {
   public characters: MkItem[];
   public vehicles: MkItem[];
-  public tires: MkItem[];
+  public wheels: MkItem[];
   public gliders: MkItem[];
 
   constructor(mario: MarioService) {
-    this.characters = mario.allCharacters;
+    this.characters = mario.getAllCharacters();
+    this.vehicles = mario.getAllVehicles();
+    this.wheels = mario.getAllWheels();
+    this.gliders = mario.getAllGliders();
   }
 
   ngOnInit() {
