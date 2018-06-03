@@ -14,21 +14,9 @@
         <ion-icon name="warning" color="danger"></ion-icon>
         You need to select at least one character type other than Mii.
       </div>
-      <ion-item>
-        <ion-label>Include Small</ion-label>
-        <ion-checkbox [checked]="isCharacterChecked(CharacterSize.Small)"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label>Include Medium</ion-label>
-        <ion-checkbox [checked]="isCharacterChecked(CharacterSize.Medium)"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label>Include Large</ion-label>
-        <ion-checkbox [checked]="isCharacterChecked(CharacterSize.Large)"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label>Include Mii</ion-label>
-        <ion-checkbox [checked]="isCharacterChecked(CharacterSize.Mii)"></ion-checkbox>
+      <ion-item *ngFor="let size of CharacterSize | enum">
+        <ion-label>Include {{ CharacterSize[size] }}</ion-label>
+        <ion-checkbox [checked]="isCharacterChecked(size)"></ion-checkbox>
       </ion-item>
     </ion-card-content>
   </ion-card>
@@ -42,17 +30,9 @@
         <ion-icon name="warning" color="danger"></ion-icon>
         You need to select at least one vehicle type.
       </div>
-      <ion-item>
-        <ion-label>Include Karts</ion-label>
-        <ion-checkbox [checked]="isVehicleChecked(VehicleType.Kart)"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label>Include Bikes</ion-label>
-        <ion-checkbox [checked]="isVehicleChecked(VehicleType.Bike)"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label>Include ATVs</ion-label>
-        <ion-checkbox [checked]="isVehicleChecked(VehicleType.ATV)"></ion-checkbox>
+      <ion-item *ngFor="let type of VehicleType | enum">
+        <ion-label>Include {{ VehicleType[type] }}</ion-label>
+        <ion-checkbox [checked]="isVehicleChecked(type)"></ion-checkbox>
       </ion-item>
     </ion-card-content>
   </ion-card>
