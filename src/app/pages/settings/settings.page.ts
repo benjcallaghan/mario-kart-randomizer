@@ -1,14 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { KartSettings } from '../../kart-settings';
 import { CharacterSize } from '../../character-size.enum';
 import { VehicleType } from '../../vehicle-type.enum';
+import { SettingsService } from '../../services/settings.service';
+import { CanDeactivateComponent } from '../../guards/can-deactivate.guard';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'mk-settings',
   templateUrl: './settings.page.html',
   styleUrls: ['./settings.page.scss'],
 })
-export class SettingsPage {
+export class SettingsPage implements OnInit, OnDestroy, CanDeactivateComponent {
   // Needed to access enums inside the template
   public CharacterSize = CharacterSize;
   public VehicleType = VehicleType;
@@ -19,7 +23,19 @@ export class SettingsPage {
     allowDuplicates: true
   };
 
-  constructor() { }
+  constructor(private settingsService: SettingsService) { }
+
+  async ngOnInit() {
+    this.settings = await this.settingsService.loadSettings();
+  }
+
+  ngOnDestroy() {
+    this.settingsService.saveSettings(this.settings);
+  }
+
+  canDeactivate(): boolean {
+    return this.isValidCharacters && this.isValidVehicles;
+  }
 
   get isValidCharacters(): boolean {
     const required = CharacterSize.Small | CharacterSize.Medium | CharacterSize.Large;

@@ -7,11 +7,13 @@ import { IonicModule } from '@ionic/angular';
 
 import { SettingsPage } from './settings.page';
 import { PipesModule } from '../../pipes/pipes.module';
+import { CanDeactivateGuard } from '../../guards/can-deactivate.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: SettingsPage
+    component: SettingsPage,
+    canDeactivate: [CanDeactivateGuard]
   }
 ];
 

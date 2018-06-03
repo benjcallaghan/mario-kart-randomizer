@@ -19,7 +19,7 @@ export class SettingsService {
   constructor(private storage: Storage) { }
 
   saveSettings(settings: KartSettings): Promise<void> {
-    Object.assign(this.settingsCache, settings);
+    this.settingsCache = Object.assign({}, settings);
     return this.storage.set('kart-settings', settings);
   }
 
