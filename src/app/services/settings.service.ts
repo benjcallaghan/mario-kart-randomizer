@@ -8,7 +8,7 @@ import { VehicleType } from '../vehicle-type.enum';
   providedIn: 'root'
 })
 export class SettingsService {
-  private static defaultSettings: KartSettings = {
+  public static defaultSettings: KartSettings = {
     allowedCharacters: CharacterSize.Small | CharacterSize.Medium | CharacterSize.Large | CharacterSize.Mii,
     allowedVehicles: VehicleType.Kart | VehicleType.Bike | VehicleType.ATV,
     allowDuplicates: true

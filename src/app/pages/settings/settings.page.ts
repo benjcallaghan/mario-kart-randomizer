@@ -17,11 +17,7 @@ export class SettingsPage implements OnInit, OnDestroy, CanDeactivateComponent {
   public CharacterSize = CharacterSize;
   public VehicleType = VehicleType;
 
-  private settings: KartSettings = {
-    allowedCharacters: CharacterSize.Small | CharacterSize.Medium | CharacterSize.Large | CharacterSize.Mii,
-    allowedVehicles: VehicleType.Kart | VehicleType.Bike | VehicleType.ATV,
-    allowDuplicates: true
-  };
+  private settings = SettingsService.defaultSettings;
 
   constructor(private settingsService: SettingsService) { }
 
