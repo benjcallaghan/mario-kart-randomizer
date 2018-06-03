@@ -8,11 +8,8 @@ import { Platform } from '@ionic/angular';
 })
 export class AppComponent {
   public appPages = [
-    {
-      title: 'Home',
-      url: '/home',
-      icon: 'home'
-    }
+    { title: 'Home', url: '/home', icon: 'home' },
+    { title: 'Settings', url: '/settings', icon: 'settings' }
   ];
 
   constructor(

@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+      <ion-card-header>
+        <h2>Characters</h2>
+      </ion-card-header>
+      <ion-card-content>
+        <div *ngIf="!hasOneCharacter()">
+          <ion-icon name="warning" color="danger"></ion-icon>
+          You need to select at least one character type other than Mii.
+        </div>
+        <ion-item>
+          <ion-label>Include Small</ion-label>
+          <ion-checkbox [(ngModel)]="settings.includeSmall"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>Include Medium</ion-label>
+          <ion-checkbox [(ngModel)]="settings.includeMedium"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>Include Large</ion-label>
+          <ion-checkbox [(ngModel)]="settings.includeLarge"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>Include Mii</ion-label>
+          <ion-checkbox [(ngModel)]="settings.includeMii"></ion-checkbox>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  
+    <ion-card>
+      <ion-card-header>
+        <h2>Vehicles</h2>
+      </ion-card-header>
+      <ion-card-content>
+        <div color="danger" *ngIf="!hasOneVehicle()">
+          <ion-icon name="warning" color="danger"></ion-icon>
+          You need to select at least one vehicle type.
+        </div>
+        <ion-item>
+          <ion-label>Include Karts</ion-label>
+          <ion-checkbox [(ngModel)]="settings.includeKarts"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>Include Bikes</ion-label>
+          <ion-checkbox [(ngModel)]="settings.includeBikes"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>Include ATVs</ion-label>
+          <ion-checkbox [(ngModel)]="settings.includeATVs"></ion-checkbox>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  
+    <ion-card>
+      <ion-card-header>
+        <h2>Options</h2>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Allow Duplicates</ion-label>
+          <ion-checkbox [(ngModel)]="settings.allowDuplicates"></ion-checkbox>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+  
