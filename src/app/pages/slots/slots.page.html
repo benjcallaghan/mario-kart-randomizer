@@ -6,6 +6,11 @@
     <ion-title>
       Randomizer
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button icon-only (click)="shuffleItems()">
+        <ion-icon name="shuffle" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -14,16 +19,16 @@
     <ion-row>
       <ion-col *ngFor="let player of players" col-6 col-sm-3>
         <ion-row>
-          <mk-container [items]="characters"></mk-container>
+          <mk-container #character [items]="characters"></mk-container>
         </ion-row>
         <ion-row>
-          <mk-container [items]="vehicles"></mk-container>
+          <mk-container #vehicle [items]="vehicles"></mk-container>
         </ion-row>
         <ion-row>
-          <mk-container [items]="wheels"></mk-container>
+          <mk-container #wheel [items]="wheels"></mk-container>
         </ion-row>
         <ion-row>
-          <mk-container [items]="gliders"></mk-container>
+          <mk-container #glider [items]="gliders"></mk-container>
         </ion-row>
         <ion-row>
           <ion-button size="small" expand="block">
