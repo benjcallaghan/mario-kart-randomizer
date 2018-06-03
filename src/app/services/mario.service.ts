@@ -20,6 +20,7 @@ export class MarioService {
     { itemType: 's', name: 'Larry', image: '32px-MK8_Larry_Icon.png' },
     { itemType: 's', name: 'Wendy', image: '32px-MK8_Wendy_Icon.png' },
     { itemType: 's', name: 'Isabelle', image: '32px-MK8_Isabelle_Icon.png' },
+    { itemType: 's', name: 'Mii (Small)', image: '32px-Mii_MK8.png' },
     { itemType: 'm', name: 'Mario', image: '32px-MK8_Mario_Icon.png' },
     { itemType: 'm', name: 'Luigi', image: '32px-MK8_Luigi_Icon.png' },
     { itemType: 'm', name: 'Peach', image: '32px-MK8_Peach_Icon.png' },
@@ -32,6 +33,7 @@ export class MarioService {
     { itemType: 'm', name: 'Tanooki Mario', image: '32px-MK8_Tanooki_Mario_Icon.png' },
     { itemType: 'm', name: 'Cat Peach', image: '32px-MK8_Cat_Peach_Icon.png' },
     { itemType: 'm', name: 'Villager', image: '50px-MK8_Villager_Icon.png' },
+    { itemType: 'm', name: 'Mii (Medium)', image: '32px-Mii_MK8.png' },
     { itemType: 'l', name: 'Rosalina', image: '32px-MK8_Rosalina_Icon.png' },
     { itemType: 'l', name: 'Bowser', image: '32px-MK8_Bowser_Icon.png' },
     { itemType: 'l', name: 'Donkey Kong', image: '32px-MK8_DKong_Icon.png' },
@@ -41,7 +43,7 @@ export class MarioService {
     { itemType: 'l', name: 'Morton', image: '32px-MK8_Morton_Icon.png' },
     { itemType: 'l', name: 'Link', image: '32px-MK8_Link_Icon.png' },
     { itemType: 'l', name: 'Dry Bowser', image: '32px-MK8_Dry_Bowser_Icon.png' },
-    { itemType: 'mii', name: 'Mii', image: '32px-Mii_MK8.png' }
+    { itemType: 'l', name: 'Mii (Large)', image: '32px-Mii_MK8.png' }
   ];
 
   private static vehicles: MkItem[] = [
