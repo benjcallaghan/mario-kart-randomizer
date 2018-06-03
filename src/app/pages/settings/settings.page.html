@@ -16,7 +16,7 @@
       </div>
       <ion-item *ngFor="let size of CharacterSize | enum">
         <ion-label>Include {{ CharacterSize[size] }}</ion-label>
-        <ion-checkbox [checked]="isCharacterChecked(size)"></ion-checkbox>
+        <ion-checkbox [checked]="isCharacterEnabled(size)" (ionChange)="enableCharacter(size, $event.detail.checked)"></ion-checkbox>
       </ion-item>
     </ion-card-content>
   </ion-card>
@@ -32,7 +32,7 @@
       </div>
       <ion-item *ngFor="let type of VehicleType | enum">
         <ion-label>Include {{ VehicleType[type] }}</ion-label>
-        <ion-checkbox [checked]="isVehicleChecked(type)"></ion-checkbox>
+        <ion-checkbox [checked]="isVehicleEnabled(type)" (ionChange)="enableVehicle(size, $event.detail.checked)"></ion-checkbox>
       </ion-item>
     </ion-card-content>
   </ion-card>
@@ -44,7 +44,7 @@
     <ion-card-content>
       <ion-item>
         <ion-label>Allow Duplicates</ion-label>
-        <ion-checkbox [checked]="isDuplicatesChecked()"></ion-checkbox>
+        <ion-checkbox [checked]="isDuplicatesEnabled()" (ionChange)="enableDuplicates($event.detail.checked)"></ion-checkbox>
       </ion-item>
     </ion-card-content>
   </ion-card>
