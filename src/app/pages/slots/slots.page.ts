@@ -34,7 +34,7 @@ export class SlotsPage implements OnInit {
 
   }
 
-  async shuffleItems(): Promise<void> {
+  async shuffleItems(player?: number): Promise<void> {
     const shuffleTime = 2000;
 
     const characters = this.randomizeCharacters();
@@ -42,12 +42,23 @@ export class SlotsPage implements OnInit {
     const wheels = this.randomizeWheels();
     const gliders = this.randomizeGliders();
 
-    const promises = flatten(
-      this.characterSpinners.map((spinner, i) => spinner.spin(shuffleTime, characters[i].name)),
-      this.vehicleSpinners.map((spinner, i) => spinner.spin(shuffleTime, vehicles[i].name)),
-      this.wheelSpinners.map((spinner, i) => spinner.spin(shuffleTime, wheels[i].name)),
-      this.gliderSpinners.map((spinner, i) => spinner.spin(shuffleTime, gliders[i].name))
-    );
+    let promises: Promise<number>[];
+    if (player > -1) {
+      promises = [
+        this.characterSpinners.find((_, i) => i === player).spin(shuffleTime, characters[0].name),
+        this.vehicleSpinners.find((_, i) => i === player).spin(shuffleTime, vehicles[0].name),
+        this.wheelSpinners.find((_, i) => i === player).spin(shuffleTime, wheels[0].name),
+        this.gliderSpinners.find((_, i) => i === player).spin(shuffleTime, gliders[0].name)
+      ];
+    } else {
+      promises = flatten(
+        this.characterSpinners.map((spinner, i) => spinner.spin(shuffleTime, characters[i].name)),
+        this.vehicleSpinners.map((spinner, i) => spinner.spin(shuffleTime, vehicles[i].name)),
+        this.wheelSpinners.map((spinner, i) => spinner.spin(shuffleTime, wheels[i].name)),
+        this.gliderSpinners.map((spinner, i) => spinner.spin(shuffleTime, gliders[i].name))
+      );
+    }
+
     await Promise.all(promises);
   }
 
