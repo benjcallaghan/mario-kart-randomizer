@@ -23,6 +23,7 @@
     "@capacitor/core": "^1.0.0-alpha.38",
     "@ionic/angular": "4.0.0-alpha.7",
     "@ionic/schematics-angular": "latest",
+    "@ionic/storage": "^2.1.3",
     "core-js": "^2.5.3",
     "rxjs": "6.1.0",
     "zone.js": "^0.8.26"
