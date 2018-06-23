@@ -7,13 +7,15 @@ import { MkItem } from '../../mk-item';
   styleUrls: ['./container.component.scss']
 })
 export class ContainerComponent implements AfterViewInit {
+  private static audio = new Audio('assets/sounds/item-box.mp3');
+
   @Input() public items: MkItem[];
   public transform: string;
   public running: boolean;
 
   @ViewChild('spinner') private spinner: ElementRef;
   private wheel: any;
-  private audio: HTMLAudioElement;
+  private audio = ContainerComponent.audio.cloneNode() as HTMLAudioElement;
 
   constructor(private zone: NgZone) {
     this.wheel = {
@@ -25,8 +27,6 @@ export class ContainerComponent implements AfterViewInit {
       spinner: {},
       rotate: ''
     };
-
-    this.audio = new Audio('assets/sounds/item-box.mp3');
   }
 
   ngAfterViewInit(): void {
