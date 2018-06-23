@@ -108,9 +108,9 @@ export class ContainerComponent implements AfterViewInit {
     }
   }
 
-  spin(duration: number, name: string): Promise<number> {
+  spin(name: string, duration?: number): Promise<number> {
     return new Promise((resolve, reject) => {
-      duration = duration || 5000;
+      duration = duration || 2000;
 
       setTimeout(() => {
         this.start();

@@ -41,7 +41,6 @@ export class SlotsPage implements OnInit {
   }
 
   async shuffleItems(player?: number): Promise<void> {
-    const shuffleTime = 2000;
     const shuffleCount = player > -1 ? 1 : this.players.length;
 
     const characters = this.randomizeCharacters(shuffleCount);
@@ -52,21 +51,41 @@ export class SlotsPage implements OnInit {
     let promises: Promise<number>[];
     if (shuffleCount === 1) {
       promises = [
-        this.characterSpinners.find((_, i) => i === player).spin(shuffleTime, characters[0].name),
-        this.vehicleSpinners.find((_, i) => i === player).spin(shuffleTime, vehicles[0].name),
-        this.wheelSpinners.find((_, i) => i === player).spin(shuffleTime, wheels[0].name),
-        this.gliderSpinners.find((_, i) => i === player).spin(shuffleTime, gliders[0].name)
+        this.characterSpinners.find((_, i) => i === player).spin(characters[0].name),
+        this.vehicleSpinners.find((_, i) => i === player).spin(vehicles[0].name),
+        this.wheelSpinners.find((_, i) => i === player).spin(wheels[0].name),
+        this.gliderSpinners.find((_, i) => i === player).spin(gliders[0].name)
       ];
     } else {
       promises = flatten(
-        this.characterSpinners.map((spinner, i) => spinner.spin(shuffleTime, characters[i].name)),
-        this.vehicleSpinners.map((spinner, i) => spinner.spin(shuffleTime, vehicles[i].name)),
-        this.wheelSpinners.map((spinner, i) => spinner.spin(shuffleTime, wheels[i].name)),
-        this.gliderSpinners.map((spinner, i) => spinner.spin(shuffleTime, gliders[i].name))
+        this.characterSpinners.map((spinner, i) => spinner.spin(characters[i].name)),
+        this.vehicleSpinners.map((spinner, i) => spinner.spin(vehicles[i].name)),
+        this.wheelSpinners.map((spinner, i) => spinner.spin(wheels[i].name)),
+        this.gliderSpinners.map((spinner, i) => spinner.spin(gliders[i].name))
       );
     }
 
     await Promise.all(promises);
+  }
+
+  async shuffleCharacter(spinner: ContainerComponent) {
+    const characters = this.randomizeCharacters(1);
+    await spinner.spin(characters[0].name);
+  }
+
+  async shuffleVehicle(spinner: ContainerComponent) {
+    const vehicles = this.randomizeVehicles(1);
+    await spinner.spin(vehicles[0].name);
+  }
+
+  async shuffleWheel(spinner: ContainerComponent) {
+    const wheels = this.randomizeWheels(1);
+    await spinner.spin(wheels[0].name);
+  }
+
+  async shuffleGlider(spinner: ContainerComponent) {
+    const gliders = this.randomizeWheels(1);
+    await spinner.spin(gliders[0].name);
   }
 
   randomizeCharacters(count: number): MkItem[] {
