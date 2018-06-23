@@ -1,11 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { KartSettings } from '../../kart-settings';
 import { CharacterSize } from '../../character-size.enum';
 import { VehicleType } from '../../vehicle-type.enum';
 import { SettingsService } from '../../services/settings.service';
 import { CanDeactivateComponent } from '../../guards/can-deactivate.guard';
-import { Router, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'mk-settings',

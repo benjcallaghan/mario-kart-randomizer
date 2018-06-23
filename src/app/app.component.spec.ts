@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, } from '@angular/core/testing';
 
 import { Platform } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
