@@ -133,11 +133,11 @@ export class MarioService {
 
   constructor() { }
 
-  getAllCharacters(): MkItem[] {
+  getAllCharacters(): Character[] {
     return MarioService.characters;
   }
 
-  getAllVehicles(): MkItem[] {
+  getAllVehicles(): Vehicle[] {
     return MarioService.vehicles;
   }
 

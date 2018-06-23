@@ -2,6 +2,10 @@ import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { MarioService } from '../../services/mario.service';
 import { MkItem } from '../../mk-item';
 import { ContainerComponent } from '../../components/container/container.component';
+import { KartSettings } from '../../kart-settings';
+import { SettingsService } from '../../services/settings.service';
+import { Character } from '../../character';
+import { Vehicle } from '../../vehicle';
 
 @Component({
   selector: 'mk-slots',
@@ -9,8 +13,8 @@ import { ContainerComponent } from '../../components/container/container.compone
   styleUrls: ['slots.page.scss'],
 })
 export class SlotsPage implements OnInit {
-  public characters: MkItem[];
-  public vehicles: MkItem[];
+  public characters: Character[];
+  public vehicles: Vehicle[];
   public wheels: MkItem[];
   public gliders: MkItem[];
 
@@ -23,15 +27,17 @@ export class SlotsPage implements OnInit {
   @ViewChildren('wheel') private wheelSpinners: QueryList<ContainerComponent>;
   @ViewChildren('glider') private gliderSpinners: QueryList<ContainerComponent>;
 
-  constructor(mario: MarioService) {
+  private settings: KartSettings;
+
+  constructor(mario: MarioService, private settingsService: SettingsService) {
     this.characters = mario.getAllCharacters();
     this.vehicles = mario.getAllVehicles();
     this.wheels = mario.getAllWheels();
     this.gliders = mario.getAllGliders();
   }
 
-  ngOnInit() {
-
+  async ngOnInit() {
+    this.settings = await this.settingsService.loadSettings();
   }
 
   async shuffleItems(player?: number): Promise<void> {
@@ -63,11 +69,15 @@ export class SlotsPage implements OnInit {
   }
 
   randomizeCharacters(): MkItem[] {
-    return shuffle(this.characters);
+    const characters = this.characters
+      .filter(c => (c.size & this.settings.allowedCharacters) === c.size);
+    return shuffle(characters);
   }
 
   randomizeVehicles() {
-    return shuffle(this.vehicles);
+    const vehicles = this.vehicles
+      .filter(v => v.type & this.settings.allowedVehicles);
+    return shuffle(vehicles);
   }
 
   randomizeWheels() {
