@@ -13,6 +13,7 @@ export class ContainerComponent implements AfterViewInit {
 
   @ViewChild('spinner') private spinner: ElementRef;
   private wheel: any;
+  private audio: HTMLAudioElement;
 
   constructor(private zone: NgZone) {
     this.wheel = {
@@ -24,6 +25,8 @@ export class ContainerComponent implements AfterViewInit {
       spinner: {},
       rotate: ''
     };
+
+    this.audio = new Audio('assets/sounds/item-box.mp3');
   }
 
   ngAfterViewInit(): void {
@@ -99,6 +102,7 @@ export class ContainerComponent implements AfterViewInit {
 
   start() {
     this.running = true;
+    this.audio.play();
   }
 
   stop(item: number) {
