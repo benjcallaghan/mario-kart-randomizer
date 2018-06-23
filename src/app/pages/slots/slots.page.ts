@@ -42,14 +42,15 @@ export class SlotsPage implements OnInit {
 
   async shuffleItems(player?: number): Promise<void> {
     const shuffleTime = 2000;
+    const shuffleCount = player > -1 ? 1 : this.players.length;
 
-    const characters = this.randomizeCharacters();
-    const vehicles = this.randomizeVehicles();
-    const wheels = this.randomizeWheels();
-    const gliders = this.randomizeGliders();
+    const characters = this.randomizeCharacters(shuffleCount);
+    const vehicles = this.randomizeVehicles(shuffleCount);
+    const wheels = this.randomizeWheels(shuffleCount);
+    const gliders = this.randomizeGliders(shuffleCount);
 
     let promises: Promise<number>[];
-    if (player > -1) {
+    if (shuffleCount === 1) {
       promises = [
         this.characterSpinners.find((_, i) => i === player).spin(shuffleTime, characters[0].name),
         this.vehicleSpinners.find((_, i) => i === player).spin(shuffleTime, vehicles[0].name),
@@ -68,35 +69,28 @@ export class SlotsPage implements OnInit {
     await Promise.all(promises);
   }
 
-  randomizeCharacters(): MkItem[] {
+  randomizeCharacters(count: number): MkItem[] {
     const characters = this.characters
       .filter(c => (c.size & this.settings.allowedCharacters) === c.size);
-    return shuffle(characters);
+    return this.randomize(characters, count);
   }
 
-  randomizeVehicles() {
+  randomizeVehicles(count: number): MkItem[] {
     const vehicles = this.vehicles
       .filter(v => v.type & this.settings.allowedVehicles);
-    return shuffle(vehicles);
+    return this.randomize(vehicles, count);
   }
 
-  randomizeWheels() {
-    return shuffle(this.wheels);
+  randomizeWheels(count: number): MkItem[] {
+    return this.randomize(this.wheels, count);
   }
 
-  randomizeGliders() {
-    return shuffle(this.gliders);
+  randomizeGliders(count: number): MkItem[] {
+    return this.randomize(this.gliders, count);
   }
 
-  buildRandomList(list: MkItem[], count: number): MkItem[] {
-    const result: MkItem[] = [];
-
-    for (let i = 0; i < count; i++) {
-      const r = Math.floor(Math.random() * (list.length - 1));
-      result.push(list[r]);
-    }
-
-    return result;
+  randomize(list: MkItem[], count: number): MkItem[] {
+    return this.settings.allowDuplicates ? randomList(list, count) : shuffle(list);
   }
 }
 
@@ -111,4 +105,13 @@ function shuffle<T>(arr: T[]): T[] {
     [a[i - 1], a[j]] = [a[j], a[i - 1]];
   }
   return a;
+}
+
+function randomList<T>(arr: T[], count: number): T[] {
+  const result: T[] = [];
+  for (let i = 0; i < count; i++) {
+    const r = Math.floor(Math.random() * (arr.length - 1));
+    result.push(arr[r]);
+  }
+  return result;
 }
