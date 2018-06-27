@@ -31,7 +31,7 @@
           <mk-container #glider [items]="gliders" (click)="shuffleGlider(glider)"></mk-container>
         </ion-row>
         <ion-row>
-          <ion-button size="small" expand="block" (click)="shuffleItems(i)">
+          <ion-button size="small" color="player{{i}}" expand="block" (click)="shuffleItems(i)">
             {{ player }}
           </ion-button>
         </ion-row>
