@@ -21,6 +21,13 @@ export class SlotsPage implements OnInit {
   public players = [
     'Player 1', 'Player 2', 'Player 3', 'Player 4'
   ];
+  
+  public colors = [
+    'warning', // Player 1 - yellow
+    'primary', // Player 2 - blue
+    'danger',  // Player 3 - red
+    'success'  // Player 4 - green
+  ];
 
   @ViewChildren('character') private characterSpinners: QueryList<ContainerComponent>;
   @ViewChildren('vehicle') private vehicleSpinners: QueryList<ContainerComponent>;
