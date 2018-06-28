@@ -19,14 +19,10 @@ export class SlotsPage implements OnInit {
   public gliders: MkItem[];
 
   public players = [
-    'Player 1', 'Player 2', 'Player 3', 'Player 4'
-  ];
-  
-  public colors = [
-    'warning', // Player 1 - yellow
-    'primary', // Player 2 - blue
-    'danger',  // Player 3 - red
-    'success'  // Player 4 - green
+    { name: 'Player 1', color: 'warning' }, // Player 1 - yellow
+    { name: 'Player 2', color: 'primary' }, // Player 2 - blue
+    { name: 'Player 3', color: 'danger' },  // Player 3 - red
+    { name: 'Player 4', color: 'success' }  // Player 4 - green
   ];
 
   @ViewChildren('character') private characterSpinners: QueryList<ContainerComponent>;
