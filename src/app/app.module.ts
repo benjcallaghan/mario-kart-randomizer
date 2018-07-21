@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { ComponentsModule } from './components/components.module';
 import { IonicStorageModule } from '@ionic/storage';
 import { CanDeactivateGuard } from './guards/can-deactivate.guard';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +20,8 @@ import { CanDeactivateGuard } from './guards/can-deactivate.guard';
     IonicModule.forRoot(),
     AppRoutingModule,
     ComponentsModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
